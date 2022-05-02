@@ -20,6 +20,7 @@ const reviewRoutes = require('./routes/reviews')
 const userRoutes = require('./routes/user');
 const MongoStore = require('connect-mongo');
 const dbURL = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp'
+const morgan = require('morgan')
 // 'mongodb://localhost:27017/yelp-camp'
 mongoose.connect(dbURL,{
     useNewUrlParser:true,
@@ -36,6 +37,7 @@ app.engine('ejs', ejsMate)
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'))
 
+app.use(morgan('dev'))
 app.use(express.urlencoded({extended:true}))
 app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname,'public')))
