@@ -31,7 +31,7 @@ mongoose.connect(dbURL,{
 const db = mongoose.connection;
 db.on("error",console.error.bind(console,"connection error"));
 db.once("open",()=>{
-    console.log("Database connected");
+    // console.log("Database connected");
 })
 app.engine('ejs', ejsMate)
 app.set('view engine','ejs');
@@ -51,7 +51,7 @@ const store = MongoStore.create({
 })
 
 store.on("error",function(e){
-    console.log("seession Store Error",e)
+    // console.log("seession Store Error",e)
 })
 
 const sessionConfig = {
